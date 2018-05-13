@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Sally Trooper",
+        "trashCompactorAccess": true,
+        "messHallAccess": true,
+        "landingStripAccess": false,
+        "armoryAccess": true
+    },
+    {
+        "name": "Barry Trooper",
+        "trashCompactorAccess": true,
+        "messHallAccess": true,
+        "landingStripAccess": false,
+        "armoryAccess": true
+    },
+    {
+        "name": "Larry Trooper",
+        "trashCompactorAccess": false,
+        "messHallAccess": true,
+        "landingStripAccess": true,
+        "armoryAccess": true
+    },
+    {
+        "name": "Traitor Trooper",
+        "trashCompactorAccess": true,
+        "messHallAccess": false,
+        "landingStripAccess": false,
+        "armoryAccess": false
+    }
+]

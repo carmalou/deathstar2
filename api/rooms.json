@@ -1,0 +1,18 @@
+[
+    {
+        "keyName": "trashCompactor",
+        "displayName": "Trash Compactor"
+    },
+    {
+        "keyName": "messHall",
+        "displayName": "Mess Hall"
+    },
+    {
+        "keyName": "landingStrip",
+        "displayName": "Landing Strip"
+    },
+    {
+        "keyName": "armory",
+        "displayName": "Armory"
+    }
+]
