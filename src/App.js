@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      show: 'troopers'
+      show: 'trooper'
     };
     this.handleClick = this.handleClick.bind(this);
   }

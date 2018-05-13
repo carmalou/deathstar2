@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import IndividualTrooper from './individual-troopers.component.js';
 
 export default class Troopers extends Component {
     constructor() {
@@ -10,37 +11,14 @@ export default class Troopers extends Component {
     }
 
     GetTrooperData() {
-        this.setState({
-            trooperData: [
-                {
-                    name: 'Sally Trooper',
-                    trashCompactorAccess: true,
-                    messHallAccess: true,
-                    landingStripAccess: false,
-                    armoryAccess: true
-                },
-                {
-                    name: 'Barry Trooper',
-                    trashCompactorAccess: true,
-                    messHallAccess: true,
-                    landingStripAccess: false,
-                    armoryAccess: true
-                },
-                {
-                    name: 'Larry Trooper',
-                    trashCompactorAccess: false,
-                    messHallAccess: true,
-                    landingStripAccess: true,
-                    armoryAccess: true
-                },
-                {
-                    name: 'Traitor Trooper',
-                    trashCompactorAccess: true,
-                    messHallAccess: false,
-                    landingStripAccess: false,
-                    armoryAccess: false
-                }
-            ]
+        window.fetch('https://carmalou.com/deathstar2/api/troopers.json')
+        .then((rez) => {
+            return rez.json();
+        })
+        .then((rez2) => {
+            this.setState({
+                trooperData: rez2
+            })
         });
     }
 
@@ -52,7 +30,7 @@ export default class Troopers extends Component {
         return(
             <div>
                 <ul className="list-group">
-                    { this.state.trooperData.map(trooper => <li className="list-group-item" key={ trooper.name }>{ trooper.name }</li>) }
+                    { this.state.trooperData.map(trooper => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } />) }
                 </ul>
             </div>
         )

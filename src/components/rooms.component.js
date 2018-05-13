@@ -10,28 +10,17 @@ export default class Rooms extends Component {
     }
 
     getRooms() {
-        this.setState({
-            rooms: [
-                {
-                    keyName: 'trashCompactor',
-                    displayName: 'Trash Compactor'
-                },
-                {
-                    keyName: 'messHall',
-                    displayName: 'Mess Hall'
-                },
-                {
-                    keyName: 'landingStrip',
-                    displayName: 'Landing Strip'
-                },
-                {
-                    keyName: 'armory',
-                    displayName: 'Armory'
-                }
-            ]
+        window.fetch('https://carmalou.com/deathstar2/api/rooms.json')
+        .then((rez) => {
+            return rez.json();
         })
+        .then((rez2) => {
+            this.setState({
+                rooms: rez2
+            })
+        });
     }
-
+    
     componentDidMount() {
         this.getRooms();
     }
