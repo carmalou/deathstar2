@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddRoom from './add-room.component.js';
+import { addRoomToList } from '../actions/indexeddb/addRooms.js';
 
 export default class Rooms extends Component {
     constructor() {
@@ -13,7 +14,7 @@ export default class Rooms extends Component {
     }
 
     getRooms() {
-        window.fetch('https://carmalou.com/deathstar2/api/rooms.json')
+        return window.fetch('https://carmalou.com/deathstar2/api/rooms.json')
         .then((rez) => {
             return rez.json();
         })
@@ -25,15 +26,16 @@ export default class Rooms extends Component {
     }
 
     handleAddRoomClick() {
-        console.log('line 27');
-        console.log(this.state.addRoom);
         this.setState(function(previousState) {
             return { addRoom: !previousState.addRoom }
         })
     }
     
-    componentDidMount() {
-        this.getRooms();
+    componentWillMount() {
+        this.getRooms()
+            .then(() => {
+                addRoomToList(this.state.rooms)
+            });
     }
 
     render() {

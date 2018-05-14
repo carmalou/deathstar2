@@ -4,6 +4,7 @@ import Troopers from './components/troopers.component.js';
 import Rooms from './components/rooms.component.js';
 import logo from './logo.svg';
 import './App.css';
+import { generateDB } from './actions/indexeddb/generateDB';
 
 class App extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class App extends Component {
   }
 
   render() {
+    generateDB();
     return (
       <div className="App">
         <Tabs handleClick={ this.handleClick } />
