@@ -14,6 +14,12 @@ export default class Tabs extends Component {
                 <li className="nav-item">
                     <a className="nav-link" href="#" onClick={ this.props.handleClick('room') }>Rooms</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#">Sync</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#">Search</a>
+                </li>
             </ul>
         )
     }
