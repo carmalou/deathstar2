@@ -1,4 +1,4 @@
-export function addTrooperToList(troopers) {
+export function addTroopersToList(troopers) {
     var db = window.indexedDB.open('deathstar2');
 
     db.onsuccess = function(event) {
@@ -13,7 +13,7 @@ export function addTrooperToList(troopers) {
                 armoryAccess: troopers[i].armoryAccess
             }
 
-            result.transaction('troopers', 'readwrite').objectStore('troopers').add(tmpRecord);
+            result.transaction('stormtroopers', 'readwrite').objectStore('stormtroopers').add(tmpRecord);
         }
     }
 }
