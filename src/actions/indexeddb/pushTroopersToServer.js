@@ -3,7 +3,6 @@ export function pushTroopersToServer(rooms) {
     var arr = [];
 
     open.onsuccess = function(event) {
-        console.log('hello');
         var db = event.target.result;
         var tmpTransaction = db.transaction('stormtroopers', 'readonly');
         tmpTransaction.objectStore('stormtroopers').getAll().onsuccess = function(event) {

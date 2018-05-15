@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IndividualTrooper from './individual-troopers.component.js';
+import { editTrooper } from '../actions/indexeddb/editExistingTrooper';
 
 export default class Troopers extends Component {
     constructor() {
@@ -42,6 +43,7 @@ export default class Troopers extends Component {
                 <ul className="list-group">
                     { this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } index={ index } />) }
                 </ul>
+                <span className="list-group-item"><button className="btn btn-primary" onClick={ editTrooper(this.state.trooperData) }>Save</button></span>
             </div>
         )
     }
