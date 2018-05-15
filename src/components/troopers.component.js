@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IndividualTrooper from './individual-troopers.component.js';
+import { editTrooper } from '../actions/indexeddb/editExistingTrooper';
 
 export default class Troopers extends Component {
     constructor() {
@@ -9,10 +10,10 @@ export default class Troopers extends Component {
         };
         this.GetTrooperData = this.GetTrooperData.bind(this);
         this.HandleCheckbox = this.HandleCheckbox.bind(this);
+        this.EditTrooperHandler = this.EditTrooperHandler.bind(this);
     }
 
     GetTrooperData() {
-        // this needs to be redone to use indexeddb
         var open = window.indexedDB.open('deathstar2');
         open.onsuccess = (event) => {
             var db = event.target.result;
@@ -22,6 +23,10 @@ export default class Troopers extends Component {
                 });
             };
         }
+    }
+
+    EditTrooperHandler(trooper) {
+        editTrooper(trooper);
     }
 
     HandleCheckbox(e) {
@@ -40,7 +45,7 @@ export default class Troopers extends Component {
         return(
             <div>
                 <ul className="list-group">
-                    { this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } index={ index } />) }
+                    { this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } EditTrooper={ this.EditTrooperHandler } index={ index } />) }
                 </ul>
             </div>
         )
