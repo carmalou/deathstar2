@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { editTrooper } from '../actions/indexeddb/editExistingTrooper';
 
 export default class RoomAccess extends Component {
 
     constructor() {
         super();
+        this.EditTrooperHandler = this.EditTrooperHandler.bind(this);
     }
+
+    EditTrooperHandler(trooper) {
+        editTrooper(trooper);
+    } 
 
     render() {
         console.log(this.props);
@@ -16,7 +22,7 @@ export default class RoomAccess extends Component {
                 <li className="list-group-item">Landing Strip <input type="checkbox" name="landingStripAccess" checked={ this.props.trooper.landingStripAccess } data-index={ this.props.index } onChange={ this.props.HandleCheckbox } /></li>
                 <li className="list-group-item">Armory <input type="checkbox" name="armoryAccess" checked={ this.props.trooper.armoryAccess } data-index={ this.props.index } onChange={ this.props.HandleCheckbox } /></li>
             </ul>
-            {/* <span className="list-group-item"><button className="btn btn-primary" onClick={ this.props.EditTrooperHandler(this.props.trooper) }>Save</button></span> */}
+            <span className="list-group-item"><button className="btn btn-primary" onClick={ this.EditTrooperHandler(this.props.trooper) }>Save</button></span>
             </div>
         )
     }
