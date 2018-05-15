@@ -16,7 +16,7 @@ export default class Sync extends Component {
 
     GetTrooperData() {
         // this needs to be redone to use indexeddb
-        return window.fetch('https://carmalou.com/deathstar2API/api/troopers.json')
+        return window.fetch('https://carmalou.com/deathstar2API/troopers.json')
         .then((rez) => {
             return rez.json();
         })
@@ -29,7 +29,7 @@ export default class Sync extends Component {
 
     getRooms() {
         // this needs to be redone to use indexeddb
-        return window.fetch('https://carmalou.com/deathstar2API/api/rooms.json')
+        return window.fetch('https://carmalou.com/deathstar2API/rooms.json')
         .then((rez) => {
             return rez.json();
         })
