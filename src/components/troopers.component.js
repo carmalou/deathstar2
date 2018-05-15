@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import IndividualTrooper from './individual-troopers.component.js';
-import { addTroopersToList } from '../actions/indexeddb/addTroopers.js';
 
 export default class Troopers extends Component {
     constructor() {
@@ -12,6 +11,7 @@ export default class Troopers extends Component {
     }
 
     GetTrooperData() {
+        // this needs to be redone to use indexeddb
         return window.fetch('https://carmalou.com/deathstar2/api/troopers.json')
         .then((rez) => {
             return rez.json();
@@ -20,13 +20,6 @@ export default class Troopers extends Component {
             this.setState({
                 trooperData: rez2
             })
-        });
-    }
-
-    componentDidMount() {
-        this.GetTrooperData()
-        .then(() => {
-            addTroopersToList(this.state.trooperData);
         });
     }
 

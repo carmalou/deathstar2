@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AddRoom from './add-room.component.js';
-import { addRoomToList } from '../actions/indexeddb/addRooms.js';
 
 export default class Rooms extends Component {
     constructor() {
@@ -14,6 +13,7 @@ export default class Rooms extends Component {
     }
 
     getRooms() {
+        // this needs to be redone to use indexeddb
         return window.fetch('https://carmalou.com/deathstar2/api/rooms.json')
         .then((rez) => {
             return rez.json();
@@ -29,13 +29,6 @@ export default class Rooms extends Component {
         this.setState(function(previousState) {
             return { addRoom: !previousState.addRoom }
         })
-    }
-    
-    componentWillMount() {
-        this.getRooms()
-            .then(() => {
-                addRoomToList(this.state.rooms)
-            });
     }
 
     render() {
