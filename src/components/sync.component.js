@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { addTroopersToList } from '../actions/indexeddb/addTroopers.js';
 import { addRoomToList } from '../actions/indexeddb/addRooms.js';
+import { pushRoomsToServer } from '../actions/indexeddb/pushRoomsToServer.js';
+import { pushTroopersToServer } from '../actions/indexeddb/pushTroopersToServer.js';
 
 export default class Sync extends Component {
     constructor() {
@@ -62,10 +64,10 @@ export default class Sync extends Component {
                     <button className="btn btn-info" onClick={ this.PullInTroopers }>Pull trooper data down</button>
                 </span>
                 <span className="col-md-3">
-                    <button className="btn btn-info">Push room data up</button>
+                    <button className="btn btn-info" onClick={ pushRoomsToServer }>Push room data up</button>
                 </span>
                 <span className="col-md-3">
-                    <button className="btn btn-info">Push trooper data up</button>
+                    <button className="btn btn-info" onClick={ pushTroopersToServer }>Push trooper data up</button>
                 </span>
             </div>
         )
