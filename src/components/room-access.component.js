@@ -9,7 +9,9 @@ export default class RoomAccess extends Component {
     }
 
     EditTrooperHandler(trooper) {
-        editTrooper(trooper);
+        return () => {
+            editTrooper(trooper);
+        }
     } 
 
     render() {
