@@ -55,16 +55,16 @@ export default class Sync extends Component {
     render() {
         return (
             <div className="col-md-12">
-                <span class="col-md-3">
+                <span className="col-md-3">
                     <button className="btn btn-info">Pull room data down</button>
                 </span>
-                <span class="col-md-3">
+                <span className="col-md-3">
                     <button className="btn btn-info">Pull trooper data down</button>
                 </span>
-                <span class="col-md-3">
+                <span className="col-md-3">
                     <button className="btn btn-info">Push room data up</button>
                 </span>
-                <span class="col-md-3">
+                <span className="col-md-3">
                     <button className="btn btn-info">Push trooper data up</button>
                 </span>
             </div>

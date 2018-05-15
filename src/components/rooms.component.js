@@ -14,21 +14,25 @@ export default class Rooms extends Component {
 
     getRooms() {
         // this needs to be redone to use indexeddb
-        return window.fetch('https://carmalou.com/deathstar2/api/rooms.json')
-        .then((rez) => {
-            return rez.json();
-        })
-        .then((rez2) => {
-            this.setState({
-                rooms: rez2
-            })
-        });
+        var open = window.indexedDB.open('deathstar2');
+        open.onsuccess = (event) => {
+            var db = event.target.result;
+            db.transaction('rooms', 'readonly').objectStore('rooms').getAll().onsuccess = (event) => {
+                this.setState({
+                    rooms: event.target.result
+                });
+            };
+        }
     }
 
     handleAddRoomClick() {
         this.setState(function(previousState) {
             return { addRoom: !previousState.addRoom }
         })
+    }
+
+    componentWillMount() {
+        this.getRooms();
     }
 
     render() {

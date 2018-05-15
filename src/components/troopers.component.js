@@ -12,15 +12,19 @@ export default class Troopers extends Component {
 
     GetTrooperData() {
         // this needs to be redone to use indexeddb
-        return window.fetch('https://carmalou.com/deathstar2/api/troopers.json')
-        .then((rez) => {
-            return rez.json();
-        })
-        .then((rez2) => {
-            this.setState({
-                trooperData: rez2
-            })
-        });
+        var open = window.indexedDB.open('deathstar2');
+        open.onsuccess = (event) => {
+            var db = event.target.result;
+            db.transaction('stormtroopers', 'readonly').objectStore('stormtroopers').getAll().onsuccess = (event) => {
+                this.setState({
+                    trooperData: event.target.result
+                });
+            };
+        }
+    }
+
+    componentWillMount() {
+        this.GetTrooperData();
     }
 
     render() {
