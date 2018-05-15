@@ -56,10 +56,10 @@ export default class Sync extends Component {
         return (
             <div className="col-md-12">
                 <span className="col-md-3">
-                    <button className="btn btn-info">Pull room data down</button>
+                    <button className="btn btn-info" onClick={ this.PullInRooms }>Pull room data down</button>
                 </span>
                 <span className="col-md-3">
-                    <button className="btn btn-info">Pull trooper data down</button>
+                    <button className="btn btn-info" onClick={ this.PullInTroopers }>Pull trooper data down</button>
                 </span>
                 <span className="col-md-3">
                     <button className="btn btn-info">Push room data up</button>
