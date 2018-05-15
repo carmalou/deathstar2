@@ -8,6 +8,7 @@ export default class Troopers extends Component {
             trooperData: []
         };
         this.GetTrooperData = this.GetTrooperData.bind(this);
+        this.HandleCheckbox = this.HandleCheckbox.bind(this);
     }
 
     GetTrooperData() {
@@ -23,6 +24,14 @@ export default class Troopers extends Component {
         }
     }
 
+    HandleCheckbox(e) {
+        var prevState = this.state.trooperData.splice(0);
+        prevState[e.target.getAttribute('data-index')][e.target.name] = !prevState[e.target.getAttribute('data-index')][e.target.name];
+        this.setState({
+            trooperData: prevState
+        });
+    }
+
     componentWillMount() {
         this.GetTrooperData();
     }
@@ -31,7 +40,7 @@ export default class Troopers extends Component {
         return(
             <div>
                 <ul className="list-group">
-                    { this.state.trooperData.map(trooper => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } />) }
+                    { this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } index={ index } />) }
                 </ul>
             </div>
         )
