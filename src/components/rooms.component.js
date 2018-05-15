@@ -39,7 +39,7 @@ export default class Rooms extends Component {
         return(
             <div>
                 <ul className="list-group">
-                    { this.state.rooms.map(room => <li className="list-group-item" key={ room.keyName }>{ room.displayName }</li>) }
+                    { this.state.rooms.length > 0 ? this.state.rooms.map(room => <li className="list-group-item" key={ room.keyName }>{ room.displayName }</li>) : 'Looks like you don\'t have any data! Head over to the sync page to pull data from the server!' }
                 </ul>
             </div>
         )

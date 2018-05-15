@@ -39,7 +39,7 @@ export default class Troopers extends Component {
         return(
             <div>
                 <ul className="list-group">
-                    { this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } index={ index } />) }
+                    { this.state.trooperData.length > 0 ? this.state.trooperData.map((trooper, index) => <IndividualTrooper className="list-group-item" key={ trooper.name } trooper={ trooper } HandleCheckbox={ this.HandleCheckbox } index={ index } />) : 'Looks like you don\'t have any data! Head over to the sync page to pull data from the server!' }
                 </ul>
             </div>
         )
