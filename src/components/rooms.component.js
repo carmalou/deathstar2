@@ -40,10 +40,6 @@ export default class Rooms extends Component {
             <div>
                 <ul className="list-group">
                     { this.state.rooms.map(room => <li className="list-group-item" key={ room.keyName }>{ room.displayName }</li>) }
-                    <li className="list-group-item">
-                        <button className="btn btn-info" onClick={ this.handleAddRoomClick }>Add another room</button>
-                        { this.state.addRoom ? <AddRoom /> : ''}
-                    </li>
                 </ul>
             </div>
         )
